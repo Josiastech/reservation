@@ -3,12 +3,14 @@ package com.josias.reservation.services;
 import com.josias.reservation.model.Client;
 import com.josias.reservation.repository.ClientRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Define Client Services
  * @Author Josias
  */
 @Service
+@Transactional(readOnly = true)
 public class ClientService {
     private final ClientRepository clientRepository;
 
@@ -21,6 +23,7 @@ public class ClientService {
      * @param client
      * @return
      */
+    @Transactional
     public Client create(Client client) {
         return this.clientRepository.save(client);
     }
@@ -30,6 +33,7 @@ public class ClientService {
      * @param client
      * @return
      */
+    @Transactional
     public Client update(Client client) {
         return this.clientRepository.save(client);
     }
@@ -38,6 +42,7 @@ public class ClientService {
      * Delete Client
      * @param client
      */
+    @Transactional
     public void delete(Client client) {
         this.clientRepository.delete(client);
     }
