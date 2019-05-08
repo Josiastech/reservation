@@ -11,7 +11,8 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Data
 @Entity
-@Table(name = "cliente")
+@Table(name = "client")
+@NamedQuery(name = "client.findByIdentification", query="Select c from client where c.idCard = ?1")
 public class Client {
     @Id
     @GeneratedValue(generator = "system-uuid")
